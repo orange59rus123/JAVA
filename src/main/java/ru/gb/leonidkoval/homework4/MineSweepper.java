@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class MineSweepper {
     //неизменяемые значения (константы - final, имя ЗАГЛАВНЫМИ БУКВАМИ):
     //тк объявили их в классе то их будет видно вовсех методах
-    public static final int WIDTH = 15;            //ширина игр поля
+    public static final int WIDTH = 10;            //ширина игр поля
     public static final int HEIGTH = 10;           //высота игр поля
     public static final int MINES_COUNT = 20;            // колво мин
 
@@ -32,16 +32,39 @@ public class MineSweepper {
         if ((WIDTH * HEIGTH) <= MINES_COUNT) {
             System.out.println("НЕОБХОДИМО УМЕНЬШИТЬ ЧИСЛО МИН!");
         } else{
-            play();
+            boolean userWin = play();
+            if(userWin) {
+                System.out.println("\u001b[31mПОЗДРАВЛЯЮ\u001b[0m, ТЫ ОБНАРУЖИЛ ВСЕ МИНЫ!!");
+            } else {
+                System.out.println("ОДНА НОГА ЗДЕСЬ - ДРУГАЯ ТАМ ((");
+
+            }
         }
     }
 
-    public static void play() {
+    public static boolean play() {
         boolean win = true;
+        boolean isPassMove;
         int[][] board = generateBoard();            //создаёт игровое поле
         int[][] moves = new int [HEIGTH][WIDTH];
-        boolean isPassMove = move(board, moves);    // если  не взорвался true
-        //printBoard(board, moves);                          //печать игрового поля
+        do {
+        isPassMove = move(board, moves);    // если  не взорвался true
+        win = isWin(moves);
+        }while(isPassMove && !win);// прошел ход и ещё не победил крутимся в цикле если же взорвался или победил то выход из цикла
+
+        return isPassMove; // победа или поражение возвращает
+    }
+    // метод ждет когда останутся закрытыми только мины чтобы объявить победу
+    private static boolean isWin(int[][] moves) {  // как откроет все ячейки кроме занятых минами,Ч выиграл  HEIGTH * WIDTH - MINES_COUNT
+        int openCell = 0;
+        for (int i = 0; i < HEIGTH; i++) {
+            for (int j = 0; j < WIDTH; j++) {
+                if (moves[i][j] == CELL_OPEN) {
+                    openCell++;
+                }
+            }
+        }
+        return openCell + MINES_COUNT == HEIGTH * WIDTH; //все открыто остались закрытыми только мины Ч победил, иначе пока не победил
     }
 
     private static boolean move(int[][] board, int[][] moves) {
@@ -49,12 +72,20 @@ public class MineSweepper {
         printBoard(board, moves);
         int row, line;  //столбец и строка
         while(true) {
-            System.out.print("ВАШ ХОД (СТРОКА, СТОЛБЕЦ, например 1А): ");
-            String move = scanner.nextLine();
-            char firstSym = move.charAt(0);
-            char secondSym = move.charAt(1);
+            System.out.print("ВАШ ХОД (СТОЛБЕЦ, СТРОКА,  например А1): ");
+            String move = scanner.nextLine(); // на ввод примем от 0до9 от AдоZ
+            row = move.charAt(0) - 'A'; //из А1 вычтем А останется 1
+            line = move.charAt(1) - '0'; //из А1 вычтем 0 останется А  пфф там с таблицей ASCII это связано 1=49 0=48
+            if (row < WIDTH && row >= 0 && line < HEIGTH && line >= 0) { //проверяем что игрок открывает ячейки в заданном массиве
+                break; //ввёл правиьно выходим из цикла
+            }
+            System.out.println("введите координаты внутри игрового поля!!");
         }
-        return false;
+        if (board[line][row] != MINE) { //проверяем ввод Ч не координаты мины
+            moves[line][row] = CELL_OPEN;  // если нет то открываем ячейку
+            return true;
+        }
+        return false; //попали в мину взрыв
     }
 
     public static int[][] generateBoard() {
