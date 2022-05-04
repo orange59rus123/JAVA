@@ -33,9 +33,9 @@ public class HW6 {
         System.out.println();
         System.out.println("Собаки на старт!");
         System.out.println();
-        dog.swim(77);
+        dog.swim(7);
         dog2.swim(27);
-        dog3.swim(67);
+        dog3.swim(6);
         System.out.println();
         Animal[] animals = new Animal[]{cat, cat2, cat3, dog, dog2, dog3};
 
