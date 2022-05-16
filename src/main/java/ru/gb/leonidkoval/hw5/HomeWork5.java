@@ -20,9 +20,9 @@ public class HomeWork5 {
         persArray[2] = new Employee("Andreev Andrei Andreevich", "manager", "andreev@mail.ru", 102, 40000, 38);
         persArray[3] = new Employee("Nikolaev Nikola Nikolaevich", "driver", "Nikolaev@mail.ru", 103, 40000, 28);
         persArray[4] = new Employee("Vitalin Vitalii Vitalevich", "driver", "vitalin@mail.ru", 104, 40000, 22);
-        for (Employee var : persArray)
-            if (var.getAge() > 40) {
-                System.out.println(var);
+        for (Employee employee : persArray)
+            if (employee.getAge() > 40) {
+                System.out.println(employee);
             }
     }
 }
