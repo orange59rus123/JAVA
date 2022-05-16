@@ -12,13 +12,16 @@ public abstract class Animal {
     private String name;
     private int age;
     private double weight;
+    private int runLimit;  //предел по методам
+    private int swimLimit; //предел по методам
 
-    public Animal(String name, int age, double weight) {
+    public Animal(String name, int age, double weight, int runLimit, int swimLimit) {
         this.name = name;
         this.age = age;
         this.weight = weight;
+        this.runLimit = runLimit;
+        this.swimLimit = swimLimit;
     }
-
 
 
     public String getName() {
@@ -45,10 +48,21 @@ public abstract class Animal {
         this.weight = weight;
     }
 
-    public void run(int a){
-        System.out.println(name + " пробежал " + a + " м.");
-    }
-    public void swim(int a){
-        System.out.println(name + " проплыл " + a + " м.");
-    }
+     public void run(int length) {
+         if (length >= runLimit) {
+             System.out.println(this + " не бегут дальше");
+         } else {
+             System.out.println(this + " пробежал " + length + " м."); //this вместо getName тк есть toString
+         }
+     }
+
+     public void swim(int length) {
+         if (length >= swimLimit) {
+             System.out.println(this + " не проплывет столько");
+         } else {
+             System.out.println(this + " проплыл " + length + " м."); //this вместо getName тк есть toString
+         }
+     }
 }
+
+
