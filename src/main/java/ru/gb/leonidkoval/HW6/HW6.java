@@ -56,6 +56,8 @@ public class HW6 {
                 new Dog("Рон", 4, 9),
 
         };
+        System.out.println("колво животных " + Animal.getCount());
+
         final Random random = new Random();
         for (Animal animal : animalss) {
             animal.run(random.nextInt(205));

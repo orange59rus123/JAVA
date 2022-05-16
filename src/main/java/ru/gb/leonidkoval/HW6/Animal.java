@@ -12,8 +12,9 @@ public abstract class Animal {
     private String name;
     private int age;
     private double weight;
-    private int runLimit;  //предел по методам
-    private int swimLimit; //предел по методам
+    private final int runLimit;  //предел по методам
+    private final int swimLimit; //предел по методам
+    private static int count;  //для подсчета животных создаём каунт равен 0. static чтобы менять
 
     public Animal(String name, int age, double weight, int runLimit, int swimLimit) {
         this.name = name;
@@ -21,6 +22,7 @@ public abstract class Animal {
         this.weight = weight;
         this.runLimit = runLimit;
         this.swimLimit = swimLimit;
+        count++; //плюсуем начиная от нуля при каждом вызове конструктора
     }
 
 
@@ -48,7 +50,11 @@ public abstract class Animal {
         this.weight = weight;
     }
 
-     public void run(int length) {
+    public static int getCount() {
+        return count;
+    }
+
+    public void run(int length) {
          if (length >= runLimit) {
              System.out.println(this + " не бегут дальше");
          } else {
