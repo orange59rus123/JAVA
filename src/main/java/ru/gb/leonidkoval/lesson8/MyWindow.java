@@ -2,6 +2,8 @@ package ru.gb.leonidkoval.lesson8;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MyWindow extends JFrame {  // с помощью extends JFrame импорт swing
     public MyWindow() {
@@ -13,11 +15,24 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
         final JButton button3 = new JButton("Button #3");  //кнопки
         final JButton button4 = new JButton("Button #4");  //кнопки
         final JButton button5 = new JButton("Button #5");  //кнопки
+
         add(button1, BorderLayout.NORTH); //вызов кнопки с расположением BorderLayout
         add(button2, BorderLayout.SOUTH);
         add(button3, BorderLayout.WEST);
         add(button4, BorderLayout.EAST);
         add(button5, BorderLayout.CENTER);
+
+        button5.addActionListener(new ActionListener() { //для работы кнопки
+            //при нажатии 5 нопки на остальных кнопках подпись "Нажал на кнопку 5"
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                button1.setText("Нажал на кнопку 5");
+                button2.setText("Нажал на кнопку 5");
+                button3.setText("Нажал на кнопку 5");
+                button4.setText("Нажал на кнопку 5");
+            }
+        });
+
         setVisible(true); //чтобы окно появилось
     }
 
@@ -26,4 +41,10 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
     }
 }
 
+class Button5Listener implements ActionListener {  //implement method
+    // тут будет происходить код при нажатии на кнопку Button5
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
+    }
+}
