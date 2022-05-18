@@ -1,17 +1,38 @@
 package ru.gb.leonidkoval.hw7;
 
 
+import java.util.Scanner;
 
 public class MainClass {
     public static void main(String[] args) {
-        Cat cat = new Cat("Barsik", 40, 30);
-        Plate plate = new Plate(50);
-        plate.info();
-        cat.eat(plate);
-        plate.info();
-        cat.setFood(plate);
-        cat.info();
+        Cat[] cats = {
+                new Cat("Son", 200),
+                new Cat("Sunny", 250),
+                new Cat("Sony", 300),
+                new Cat("bigS", 500)
+        };
+        System.out.println("укажи количество калорий в первой порции");
 
+        Plate plate = new Plate(new Scanner(System.in).nextInt());
+
+        for (Cat a : cats) {
+            while (!a.isFullness() && plate.getFood() >= a.getAppetite()) { //кот не сытый И в тарелке БОЛЬШЕ чем кот
+                                                                            // съедает за раз
+                a.eat(plate);                                               // кот ест
+                plate.info();
+            }
+        }
+        for (Cat a : cats) {
+            if (a.isFullness()) {
+                System.out.printf("%s наелся\n", a.getName());
+            } else {
+                System.out.printf("%s голоден, не хватило %d калорий\n", a.getName(),
+                        a.getCatFullness() - a.getSaturationFood());
+            }
+        }
+        System.out.println("укажи количество калорий во второй порции");
+
+        Plate plate2 = new Plate(new Scanner(System.in).nextInt());
     }
 
 

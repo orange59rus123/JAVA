@@ -3,28 +3,32 @@ package ru.gb.leonidkoval.hw7;
 public class Plate {
     private int food;
 
-    public Plate(int food) {
-        this.food = food;
-    }
-
-    public void decreaseFood(int n) {
-        food -= n;
-    }
-    public void deFood(int n) {
-        food -= n;
-    }
-
-    public void info() {
-        if (food < 0) {
-            System.out.println("в тарелке не хватит еды с таким аппетитом");
-        } else {
-            System.out.println("plate: " + food);
-        }
+    public Plate(int n) {
+        food = n < 0 ? -n : n;
+        info();
     }
 
     public int getFood() {
         return food;
     }
+
+    boolean decreaseFood(int n) {
+       if (n > food) {
+           return false;
+       } else {
+           food -= n;
+           return true;
+       }
+    }
+    void addFood(int n) {
+        food += n < 0 ? -n : n;
+    }
+
+    public void info() {
+        System.out.printf(" В тарелке %d калорий еды\n\n", food);
+    }
+
+
 
 
 }
