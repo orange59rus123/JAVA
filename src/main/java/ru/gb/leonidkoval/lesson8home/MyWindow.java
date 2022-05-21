@@ -17,7 +17,7 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
         }
 
 
-       final LayoutManager boxLayout = new FlowLayout(); //FlowLayout наводит порядок в размещении кнопок
+       final LayoutManager boxLayout = new GridLayout(3, 4); //GridLayout размещение кнопок с определением колва по осям
 
         setLayout(boxLayout);
 
