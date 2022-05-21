@@ -27,10 +27,13 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
             @Override
             public void actionPerformed(ActionEvent e) {
                 final JButton button = (JButton) e.getSource();
-                button1.setText("Нажал на кнопку " + button.getText());
-                button2.setText("Нажал на кнопку " + button.getText());
-                button3.setText("Нажал на кнопку " + button.getText());
-                button4.setText("Нажал на кнопку " + button.getText());
+                final String text = button.getText();
+                final String btnNumber = text.substring(text.length() - 1);
+                button1.setText("Нажал на кнопку " + btnNumber);
+                button2.setText("Нажал на кнопку " + btnNumber);
+                button3.setText("Нажал на кнопку " + btnNumber);
+                button4.setText("Нажал на кнопку " + btnNumber);
+                button5.setText("Нажал на кнопку " + btnNumber);
             }
         };
         button1.addActionListener(btnListener);//при нажатии на кнопку название кнопок меняется "Нажал на кнопку " + button
