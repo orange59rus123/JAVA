@@ -26,10 +26,11 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
             //при нажатии 5 нопки на остальных кнопках подпись "Нажал на кнопку 5"
             @Override
             public void actionPerformed(ActionEvent e) {
-                button1.setText("Нажал на кнопку 5");
-                button2.setText("Нажал на кнопку 5");
-                button3.setText("Нажал на кнопку 5");
-                button4.setText("Нажал на кнопку 5");
+                final JButton button = (JButton) e.getSource();
+                button1.setText("Нажал на кнопку " + button.getText());
+                button2.setText("Нажал на кнопку " + button.getText());
+                button3.setText("Нажал на кнопку " + button.getText());
+                button4.setText("Нажал на кнопку " + button.getText());
             }
         });
 
