@@ -22,7 +22,7 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
         add(button4, BorderLayout.EAST);
         add(button5, BorderLayout.CENTER);
 
-        button5.addActionListener(new ActionListener() { //для работы кнопки
+        final ActionListener btnListener = new ActionListener() { //для работы кнопки
             //при нажатии 5 нопки на остальных кнопках подпись "Нажал на кнопку 5"
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,7 +32,12 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
                 button3.setText("Нажал на кнопку " + button.getText());
                 button4.setText("Нажал на кнопку " + button.getText());
             }
-        });
+        };
+        button1.addActionListener(btnListener);//при нажатии на кнопку название кнопок меняется "Нажал на кнопку " + button
+        button2.addActionListener(btnListener);
+        button3.addActionListener(btnListener);
+        button4.addActionListener(btnListener);
+        button5.addActionListener(btnListener);
 
         setVisible(true); //чтобы окно появилось
     }
