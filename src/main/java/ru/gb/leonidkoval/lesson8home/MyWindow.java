@@ -11,20 +11,18 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);// при закрытии окошка программа завершается
         setBounds(450, 200, 400, 400);//гранцы окна лев верх угол, ширина, высота
 
-        final JButton[] jButtons = new JButton[5];
-
-        jButtons[0] = new JButton("Button #1");  //кнопки с названием Button #,,
-        jButtons[1] = new JButton("Button #1");  //кнопки с названием Button #,,
-        jButtons[2] = new JButton("Button #2");  //кнопки
-        jButtons[3] = new JButton("Button #3");  //кнопки
-        jButtons[4] = new JButton("Button #4");  //кнопки
+        final JButton[] jButtons = new JButton[10];
+        for (int i = 0; i < 10; i++) {
+            jButtons[i] = new JButton("Button #" + (i + 1));
+        }
 
 
-        add(jButtons[0], BorderLayout.NORTH); //вызов кнопки с расположением BorderLayout
-        add(jButtons[1], BorderLayout.SOUTH);
-        add(jButtons[2], BorderLayout.WEST);
-        add(jButtons[3], BorderLayout.EAST);
-        add(jButtons[4], BorderLayout.CENTER);
+       final BoxLayout boxLayout = new BoxLayout(getContentPane(), BoxLayout.X_AXIS); //размещение элементов по оси Х
+        // (BoxLayout.X_AXIS)
+        setLayout(boxLayout);
+
+
+
 
         final ActionListener btnListener = new ActionListener() { //для работы кнопки
             //при нажатии 5 нопки на остальных кнопках подпись "Нажал на кнопку 5"
@@ -37,6 +35,7 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
             }
         };
         for (JButton jButton : jButtons) { //циклом определяем нажатие кнопок
+            add(jButton);
             jButton.addActionListener(btnListener);
         }
 
@@ -49,10 +48,5 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
     }
 }
 
-class Button5Listener implements ActionListener {  //implement method
-    // тут будет происходить код при нажатии на кнопку Button5
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
-    }
-}
+
