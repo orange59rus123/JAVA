@@ -31,7 +31,7 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
                 final JButton button = (JButton) e.getSource();
                 final String text = button.getText();
                 final String btnNumber = text.substring(text.length() - 1);
-
+                System.out.println("нажата кнопка " + btnNumber); //в консоль выводим какая кнопка нажата
             }
         };
         for (JButton jButton : jButtons) { //циклом определяем нажатие кнопок
