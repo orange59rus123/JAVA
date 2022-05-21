@@ -17,8 +17,8 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
         }
 
 
-       final BoxLayout boxLayout = new BoxLayout(getContentPane(), BoxLayout.X_AXIS); //размещение элементов по оси Х
-        // (BoxLayout.X_AXIS)
+       final LayoutManager boxLayout = new FlowLayout(); //FlowLayout наводит порядок в размещении кнопок
+
         setLayout(boxLayout);
 
 
