@@ -1,5 +1,6 @@
 package ru.gb.leonidkoval.hw8;
 
+<<<<<<< HEAD
 import java.util.Random;
 import java.util.Scanner;
     public class CrossAndNull {
@@ -112,3 +113,7 @@ import java.util.Scanner;
                     System.out.println();
         }
     }
+=======
+public class CrossAndNull {
+}
+>>>>>>> origin/homeWork8
