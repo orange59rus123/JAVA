@@ -14,12 +14,15 @@ public class Calculator extends JFrame { // с помощью extends JFrame и�
     public Calculator() {
         setTitle("Calculator"); //создали окно
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);  // при закрытии окошка программа завершается
+
+
         setBounds(450, 200, 400, 400);          //гранцы окна лев верх угол, ширина, высота
         setLayout(new BorderLayout());    //компановщик будет в BorderLayout
 
         final JLabel display = new JLabel("0");//создаём дисплэй изначально там ноль
+
         display.setHorizontalAlignment(SwingConstants.RIGHT);//печать с правой стороны
-        display.setFont(new Font("Arial", Font.BOLD, 25));//настройка шрифта дисплея
+        display.setFont(new Font("Arial", Font.BOLD, 40));//настройка шрифта дисплея
         add(display, BorderLayout.NORTH);//добавляем дисплей на север
 
         final ActionListener numberListener = new ActionListener() {  //для кнопок
@@ -52,6 +55,7 @@ public class Calculator extends JFrame { // с помощью extends JFrame и�
                 final Double rightOperand = Double.parseDouble(display.getText());//принял на ввод строку и принял за
                 // число
 
+
                 if ("=".equals(action)) {
                     if (leftOperand != null) {
                         switch (operation) {
@@ -70,6 +74,7 @@ public class Calculator extends JFrame { // с помощью extends JFrame и�
                         }
                         leftOperand = Double.parseDouble(display.getText());
                         operation = null;
+
                     }
                     return;
                 }
@@ -79,6 +84,7 @@ public class Calculator extends JFrame { // с помощью extends JFrame и�
             }
         };
         final JPanel numberPanel = new JPanel();
+
         final GridLayout numberLayout = new GridLayout(4, 4, 10, 10);
         numberPanel.setLayout(numberLayout); //компанощик для панели setLayout
 
