@@ -55,7 +55,6 @@ public class Calculator extends JFrame { // с помощью extends JFrame и�
                 final Double rightOperand = Double.parseDouble(display.getText());//принял на ввод строку и принял за
                 // число
 
-
                 if ("=".equals(action)) {
                     if (leftOperand != null) {
                         switch (operation) {
