@@ -16,12 +16,14 @@ public class MyWindow extends JFrame {  // с помощью extends JFrame им
             jButtons[i] = new JButton("Button #" + (i + 1));
         }
 
-
-       final LayoutManager boxLayout = new GridLayout(3, 4); //GridLayout размещение кнопок с определением колва по осям
+        final JLabel text = new JLabel("Text");
+        // JTextField // однострочное текстовое поле
+        // JTextArea // многострочное текстовое поле
+        // JRadioButton
+        // JCheckBox
+        final LayoutManager boxLayout = new GridLayout(3, 4); //GridLayout размещение кнопок с определением колва по осям
 
         setLayout(boxLayout);
-
-
 
 
         final ActionListener btnListener = new ActionListener() { //для работы кнопки
